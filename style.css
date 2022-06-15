@@ -172,7 +172,7 @@ input:active {
 .highscore-container {
     border-radius: inherit;
     font-size: 3em;
-    background: rgb(100, 160, 255);
+    background: rgb(255, 0, 0);
     min-height: 200px;
 }
 
