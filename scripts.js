@@ -15,12 +15,17 @@ let player = '';
 let highscore = 12000;
 let timerInterval;
 
+const MESSAGES = {
+    emptyHighscoresString: 'Win your first game!'
+};
+
 const COLORS = {
     MARIO: '255, 110, 110',
     LUIGI: '110, 255, 110',
     PEACH: '255, 167, 251',
     ROSALINA: '129, 238, 247',
-}
+    TOAD: '100, 160, 255',
+};
 
 // TO DO: sons
 
@@ -29,7 +34,8 @@ const VOICES = {
     LUIGI: new Audio('./static/sounds/SeResourceStdSystem_000000C9.wav'), /* https://www.sounds-resource.com/wii_u/supermario3dworld/sound/38613/ */
     PEACH: new Audio('./static/sounds/SeResourceStdSystem_000000CC.wav'), /* https://www.sounds-resource.com/wii_u/supermario3dworld/sound/38633/ */
     ROSALINA: new Audio('./static/sounds/SeResourceStdSystem_000000DD.wav'), /* https://www.sounds-resource.com/wii_u/supermario3dworld/sound/40077/ */
-}
+    TOAD: new Audio('./static/sounds/SeResourceStdSystem_00000216.wav'), /* https://www.sounds-resource.com/wii_u/supermario3dworld/sound/4729/ */
+};
 
 function getCharacterOf(card) {
     return card.dataset.card;
@@ -115,10 +121,8 @@ function areAllCardsFlipped() {
 
 function checkForWin() {
     if (areAllCardsFlipped()) {
-        const cheers = new Audio('./static/sounds/SeResourceStdSystem_00000187.wav'); /* https://www.sounds-resource.com/wii_u/supermario3dworld/sound/4729/ */
-        cheers.play();
+        clearInterval(timerInterval);
         insertHighscore();
-        resetTimer();
         startButton.disabled = false;
         return true;
     }
@@ -166,8 +170,13 @@ function debug(card) {
     console.log(card);
 }
 
+function createEmptyListItem() {
+    return createHighscoreElement(MESSAGES.emptyHighscoresString);
+}
+
 function startGame() {
     startButton.disabled = true;
+    resetTimer();
     closeForm();
     resetBoard();
     shuffleCards();
@@ -199,7 +208,14 @@ function closeForm() {
     hide(form);
 }
 
+function eliminateEmptyHighscoresString() {
+    if (highscorePane.children[0].innerHTML === MESSAGES.emptyHighscoresString) {
+        highscorePane.removeChild(highscorePane.children[0]);
+    }
+}
+
 function createAndInsertHighscore(seconds, player) {
+    eliminateEmptyHighscoresString();
     const highscoreString = createHighscoreFrom(getDisplayStringOfSeconds(seconds), player);
     const newHighscoreElement = createHighscoreElement(highscoreString);
     highscorePane.insertBefore(newHighscoreElement, highscorePane.children[0]);
@@ -253,8 +269,15 @@ function createHighscoreElement(highscoreString) {
 
 function insertHighscore() {
     if (seconds <= highscore) {
+        const cheers = new Audio('./static/sounds/SeResourceStdSystem_00000187.wav'); /* https://www.sounds-resource.com/wii_u/supermario3dworld/sound/4729/ */
+        cheers.play();
         highscore = seconds;
         openForm();
+    } else {
+        setTimeout(() => {
+            const ops = new Audio('./static/sounds/SeResourceStd1st_00000006.wav'); /* https://www.sounds-resource.com/wii_u/supermario3dworld/sound/4727/ */
+            ops.play();
+        }, 1000);
     }
 }
 

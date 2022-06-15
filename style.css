@@ -177,6 +177,7 @@ input:active {
 }
 
 #highscores li {
+    text-transform: none;
     text-align: left;
     list-style: none;
     margin-bottom: 20px;
