@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="./static/img-icon-mario.png" type="image/png">
+    <title>Jogo da Memória</title>
+</head>
+<body>
+    <div class="background"></div>
+    <div class="GUI">
+        <div class="highscore-container">
+            <h2>HIGHSCORES</h2>
+            <ul id="highscores">
+                <li>??? - ??:??s</li>
+            </ul>
+        </div>
+        <span id="timer">TIME: </span>
+    </div>
+    <main class="game">
+        <!-- Mario Icon from: https://www.spriters-resource.com/nintendo_switch/supermario3dworldbowsersfury/sheet/148512/ -->
+        <!-- Character images from: https://www.spriters-resource.com/nintendo_switch/supermario3dworldbowsersfury/sheet/155170/ -->
+        <div class="card" data-card="ROSALINA">
+            <img src="./static/img-rosalina.png" alt="frente da carta" class="card-front">
+            <img src="./static/img-icon-mario.png" alt="verso da carta" class="card-back">
+        </div>
+        <div class="card" data-card="PEACH">
+            <img src="./static/img-peach.png" alt="frente da carta" class="card-front">
+            <img src="./static/img-icon-mario.png" alt="verso da carta" class="card-back">
+        </div>
+        <div class="card" data-card="MARIO">
+            <img src="./static/img-mario.png" alt="frente da carta" class="card-front">
+            <img src="./static/img-icon-mario.png" alt="verso da carta" class="card-back">
+        </div>
+        <div class="card" data-card="LUIGI">
+            <img src="./static/img-luigi.png" alt="frente da carta" class="card-front">
+            <img src="./static/img-icon-mario.png" alt="verso da carta" class="card-back">
+        </div>
+        <div class="card" data-card="ROSALINA">
+            <img src="./static/img-rosalina.png" alt="frente da carta" class="card-front">
+            <img src="./static/img-icon-mario.png" alt="verso da carta" class="card-back">
+        </div>
+        <div class="card" data-card="PEACH">
+            <img src="./static/img-peach.png" alt="frente da carta" class="card-front">
+            <img src="./static/img-icon-mario.png" alt="verso da carta" class="card-back">
+        </div>
+        <div class="card" data-card="MARIO">
+            <img src="./static/img-mario.png" alt="frente da carta" class="card-front">
+            <img src="./static/img-icon-mario.png" alt="verso da carta" class="card-back">
+        </div>
+        <div class="card" data-card="LUIGI">
+            <img src="./static/img-luigi.png" alt="frente da carta" class="card-front">
+            <img src="./static/img-icon-mario.png" alt="verso da carta" class="card-back">
+        </div>
+        <div class="options">
+            <input id="start-btn" type="button" value="" onclick="startGame()">
+        </div>
+    </main>
+    <div class="form-container">
+        <form action="" class="submit-highscore">
+            <h3>New Highscore!</h3>
+            <input type="button" id="close">
+            <label for="close" class="checkbox">
+                <div class="trace"></div>
+                <div class="trace"></div>
+                <div class="trace"></div>
+            </label>
+            <input type="text" class="name" value="" maxlength="3" placeholder="Your nickname goes here">
+            <input type="submit" class="submit" value="OK" placeholder="Ok">
+            <div class="error-msg-wrapper">
+                <span class="error-message">Inform a valid nickname</span>
+            </div>
+        </form>
+    </div>
+    <script src="./scripts.js"></script>
+</body>
+</html>
