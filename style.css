@@ -1,4 +1,10 @@
-@import url('http://fonts.cdnfonts.com/css/new-super-mario-font-u');
+
+@font-face {
+    font-family: 'New Super Mario Font U';
+    font-style: normal;
+    font-weight: 400;
+    src: url("../Desafio-Projeto-Javascript/static/fonts/New\ Super\ Mario\ Font\ U.ttf") format('truetype');
+}
 
 * {
     padding: 0;
